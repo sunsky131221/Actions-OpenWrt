@@ -62,7 +62,7 @@ jobs:
 
     - name: Load Patch files
       run: |
-        [ -e $PATCH_FILE ] && mv $PATCH_FILE target/linux/generic/hack-6.12/$PATCH_FILE
+        [ -e $PATCH_FILE ] && mv $PATCH_FILE openwrt/target/linux/generic/hack-6.12/410-mtd-spi-nor-add-support-for-BoyaMicro-BY25Q128AS.patch
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -72,7 +72,6 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
